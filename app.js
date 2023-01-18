@@ -1,15 +1,24 @@
-'use strict';
+"use strict";
 
-const express = require('express');
+const express = require("express");
+require("express-async-errors");
+const { json } = require("body-parser");
+
+const { NotFoundError } = require("./errors");
+const { errorHandler } = require("./middlewares");
+
 const app = express();
-const port =  process.env.PORT || 3000;
+
+app.use(json());
 
 // set the view engine to ejs
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
-// routes
-app.use('/', require('./routes/profile')());
+app.use("/", require("./routes/profile")());
 
-// start server
-const server = app.listen(port);
-console.log('Express started. Listening on %s', port);
+app.all("*", async () => {
+  throw new NotFoundError();
+});
+app.use(errorHandler);
+
+module.exports = { app };
