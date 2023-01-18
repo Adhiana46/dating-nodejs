@@ -7,14 +7,19 @@ const { json } = require("body-parser");
 const { NotFoundError } = require("./errors");
 const { errorHandler } = require("./middlewares");
 
+const { ProfileRouter } = require("./routes");
+
 const app = express();
 
 app.use(json());
 
-// set the view engine to ejs
-app.set("view engine", "ejs");
+app.use("/api/v1/profile", ProfileRouter);
 
-app.use("/", require("./routes/profile")());
+app.use("/", (req, res) => {
+  res.send({
+    message: "Hello There",
+  });
+});
 
 app.all("*", async () => {
   throw new NotFoundError();
