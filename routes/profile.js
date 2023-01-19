@@ -104,16 +104,27 @@ router.get("/", async (req, res) => {
     }
   }
 
-  let profiles = [];
+  const query = {};
   if (ids.length > 0) {
-    profiles = await Profile.find({ _id: { $in: ids } });
-  } else {
-    profiles = await Profile.find({});
+    query._id = { $in: ids };
   }
+
+  const profiles = await Profile.find(query);
 
   return res.status(200).send({
     message: "Fetch Profile successfully",
     data: profiles,
+  });
+});
+
+router.get("/:id", async (req, res) => {
+  const id = req.params.id;
+
+  const profile = await Profile.findById(mongoose.Types.ObjectId(id.trim()));
+
+  return res.status(200).send({
+    message: "Get Profile successfully",
+    data: profile,
   });
 });
 
