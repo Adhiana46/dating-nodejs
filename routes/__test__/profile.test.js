@@ -1,30 +1,6 @@
 const request = require("supertest");
 const mongoose = require("mongoose");
 const { app } = require("../../app");
-const { Profile } = require("../../model");
-
-const createRandomProfile = async () => {
-  const id = new mongoose.Types.ObjectId().toHexString();
-
-  const response = await request(app)
-    .post("/api/v1/profile")
-    .send({
-      username: id, // random
-      name: "Mark Paquis",
-      description: "Adolph Larrue Martinez III.",
-      mbti: "INTJ",
-      enneagram: "9w1",
-      variant: "sp/so",
-      tritype: 725,
-      socionics: "SEE",
-      sloan: "RCOEN",
-      psyche: "FEVL",
-      image: "https://soulverse.boo.world/images/1.png",
-    })
-    .expect(201);
-
-  return response.body.data;
-};
 
 //// POST /api/v1/profile
 

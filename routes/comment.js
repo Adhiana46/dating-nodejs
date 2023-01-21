@@ -110,8 +110,6 @@ router.get(
         break;
     }
 
-    console.log("query", query);
-    console.log("sort", sort);
     const comments = await Comment.find(query).sort(sort).populate("commentBy");
 
     res.status(200).send({
@@ -120,6 +118,21 @@ router.get(
     });
   }
 );
+
+router.get("/:profileId/comments/:id", async (req, res) => {
+  const comment = await Comment.findById(
+    mongoose.Types.ObjectId(req.params.id)
+  );
+
+  if (!comment) {
+    throw new NotFoundError("Comment not found");
+  }
+
+  res.status(200).send({
+    message: "Successfully get comment",
+    data: comment,
+  });
+});
 
 router.post("/:profileId/comments/:id/like", requireAuth, async (req, res) => {
   const comment = await Comment.findById(
