@@ -32,7 +32,7 @@ const start = async () => {
 
   try {
     mongoose.set("strictQuery", false); // mongoose v7
-    await mongoose.connect("mongodb://mongo:27017/booworld");
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.log(err);
