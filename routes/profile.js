@@ -4,7 +4,7 @@ const express = require("express");
 const { body } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const { BadRequestError } = require("../errors");
+const { BadRequestError, NotFoundError } = require("../errors");
 const { Profile } = require("../model");
 const { validateRequest } = require("../middlewares");
 const { MBTI_LIST, ENNEAGRAM_LIST } = require("../constants");
@@ -121,6 +121,10 @@ router.get("/:id", async (req, res) => {
   const id = req.params.id;
 
   const profile = await Profile.findById(mongoose.Types.ObjectId(id.trim()));
+
+  if (!profile) {
+    throw new NotFoundError();
+  }
 
   return res.status(200).send({
     message: "Get Profile successfully",
