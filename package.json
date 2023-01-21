@@ -4,13 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon src/index.js",
     "test": "jest --watchAll --no-cache"
   },
   "jest": {
     "testEnvironment": "node",
     "setupFilesAfterEnv": [
-      "./test/setup.js"
+      "./src/test/setup.js"
     ]
   },
   "keywords": [],
