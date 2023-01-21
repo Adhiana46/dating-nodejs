@@ -15,4 +15,7 @@ services:
       - "27017:27017"
     restart: always
     volumes:
-      - ./tmp/mongo/:/data/db/
+      - booworld_mongo:/data/db/
+
+volumes:
+  booworld_mongo:
