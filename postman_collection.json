@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "67e2e1af-2e7b-46f7-a50f-b546d261d805",
+		"name": "Boo World",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "380150"
+	},
+	"item": [
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mark-comment\",\n    \"name\": \"Mark\",\n    \"description\": \"Adolph Larrue Martinez III.\",\n    \"mbti\": \"INTJ\",\n    \"enneagram\": \"9w1\",\n    \"variant\": \"sp/so\",\n    \"tritype\": 725,\n    \"socionics\": \"SEE\",\n    \"sloan\": \"RCOEN\",\n    \"psyche\": \"FEVL\",\n    \"image\": \"https://soulverse.boo.world/images/1.png\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mark-comment\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile/signin",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profiles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile?ids=63cb2f9e9189a2987f222319,63cb2fb29189a2987f22231c",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "63cb2f9e9189a2987f222319,63cb2fb29189a2987f22231c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile/63cb2fb29189a2987f22231c",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								"63cb2fb29189a2987f22231c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Cinta Sampai Mati\",\n    \"content\": \"Ex excepteur incididunt veniam sunt consectetur adipisicing amet duis adipisicing incididunt consectetur duis ullamco mollit. In do officia incididunt est Lorem nulla laborum cupidatat. Ut enim sunt nisi qui voluptate quis voluptate irure nulla do veniam incididunt. Laboris duis velit laboris dolor duis irure ea labore proident eiusmod. Anim irure commodo non et duis ad laboris cupidatat sint nulla. Aliqua cupidatat ad eu anim laboris aute enim aliqua in adipisicing aliqua et.\",\n    \"mbti\": null,\n    \"enneagram\": \"9w1\",\n    \"zodiac\": null\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile/:profileID/comments",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								":profileID",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "profileID",
+									"value": "63cb2f9e9189a2987f222319"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comments",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile/:profileID/comments?filter=enneagram&sort=best",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								":profileID",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "enneagram",
+									"description": "mbti|enneagram|zodiac"
+								},
+								{
+									"key": "sort",
+									"value": "best",
+									"description": "recent|best"
+								}
+							],
+							"variable": [
+								{
+									"key": "profileID",
+									"value": "63cb2f9e9189a2987f222319"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile/:profileID/comments/:commentID",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								":profileID",
+								"comments",
+								":commentID"
+							],
+							"variable": [
+								{
+									"key": "profileID",
+									"value": "63cb2f9e9189a2987f222319"
+								},
+								{
+									"key": "commentID",
+									"value": "63c95a857d52004e2097f82b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile/:profileID/comments/:commentID/like",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								":profileID",
+								"comments",
+								":commentID",
+								"like"
+							],
+							"variable": [
+								{
+									"key": "profileID",
+									"value": "63c945421c81c344321f4623"
+								},
+								{
+									"key": "commentID",
+									"value": "63cb3073a7748dd2a8727d4d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disike Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/v1/profile/:profileID/comments/:commentID/dislike",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								":profileID",
+								"comments",
+								":commentID",
+								"dislike"
+							],
+							"variable": [
+								{
+									"key": "profileID",
+									"value": "63c945421c81c344321f4623"
+								},
+								{
+									"key": "commentID",
+									"value": "63c95a857d52004e2097f82b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

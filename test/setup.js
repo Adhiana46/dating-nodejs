@@ -2,7 +2,6 @@ const { MongoMemoryServer } = require("mongodb-memory-server");
 const mongoose = require("mongoose");
 const request = require("supertest");
 const { app } = require("../app");
-const jwt = require("jsonwebtoken");
 
 let mongo;
 

@@ -8,6 +8,7 @@ services:
       - 3000:3000
     restart: always
     environment:
+      JWT_KEY: secret
       MONGO_URI: mongodb://mongo:27017/booworld
   mongo:
     image: 'mongo:4.2.16-bionic'
