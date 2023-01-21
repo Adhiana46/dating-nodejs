@@ -1,0 +1,19 @@
+apiVersion: skaffold/v4beta1
+kind: Config
+metadata:
+  name: booworld-app-nodejs
+build:
+  local:
+    push: false
+  artifacts:
+  - image: adhiana46/booworld-nodejs-api
+    context: .
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: 'src/**/*.js'
+          dest: .
+manifests:
+  rawYaml:
+  - infra/k8s/*
