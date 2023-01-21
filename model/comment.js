@@ -42,6 +42,7 @@ const CommentSchema = new mongoose.Schema(
     ],
   },
   {
+    timestamps: true,
     toJSON: {
       transform(doc, ret) {
         ret.id = ret._id;
